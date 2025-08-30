@@ -15,7 +15,7 @@ const getBooks = async (req, res) => {
 const getBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) return res.status(404).json({ message: "Book unavailable" });
     res.json(book);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -45,7 +45,7 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
   try {
     let book = await Book.findOne({ _id: req.params.id, createdBy: req.user.id });
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) return res.status(404).json({ message: "Book unavailable" });
 
     book = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(book);
@@ -58,7 +58,7 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findOneAndDelete({ _id: req.params.id, createdBy: req.user.id });
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) return res.status(404).json({ message: "Book unavailable" });
     res.json({ message: "Book deleted successfully" });
   } catch (err) {
     res.status(500).json({ error: err.message });

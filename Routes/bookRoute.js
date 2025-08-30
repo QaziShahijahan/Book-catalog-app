@@ -5,10 +5,10 @@ const { protect } = require("../MiddleWare/authMiddleWare");
 const router = express.Router();
 
 
-router.get("/books", getBooks);
-router.get("/books/:id", getBook);
-router.post("/books", protect, createBook);
-router.put("/books/:id", protect, updateBook);
-router.delete("/books:id", protect, deleteBook);
+router.get("/", getBooks);
+router.get("/:id", getBook);
+router.post("/", protect, createBook);
+router.put("/:id", protect, updateBook);
+router.delete("/:id", protect, deleteBook);
 
 module.exports = router;
