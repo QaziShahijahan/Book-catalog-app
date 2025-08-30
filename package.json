@@ -1,7 +1,7 @@
 {
   "name": "bookcatalogue",
   "version": "1.0.0",
-  "main": "Index.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
